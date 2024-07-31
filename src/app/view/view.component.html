@@ -1,0 +1,13 @@
+<!-- src/app/view/view.component.html -->
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Détails de l'Article</h1>
+  <div *ngIf="post" class="card p-4 mb-4 shadow-sm">
+    <h2 class="card-title mb-3">{{ post.title }}</h2>
+    <p class="card-text">{{ post.body }}</p>
+    <div class="d-flex justify-content-between">
+      <button (click)="deletePost()" class="btn btn-danger">Supprimer</button>
+      <a [routerLink]="['/edit', post.id]" class="btn btn-warning">Modifier</a>
+    </div>
+  </div>
+  <a [routerLink]="['/']" class="btn btn-secondary">Retour à la liste</a>
+</div>

@@ -1,6 +1,14 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
-
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+import { appConfig } from './app/app.config'; // Assurez-vous que ce fichier existe et est configuré correctement
+import { provideRouter } from '@angular/router';
+import { provideHttpClient,withFetch} from '@angular/common/http';
+import { routes } from './app/app.routes';
+import { provideClientHydration } from '@angular/platform-browser';
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideRouter(routes),
+    provideHttpClient(withFetch()), // Ajouter withFetch() ici
+    provideClientHydration()
+  ]
+});

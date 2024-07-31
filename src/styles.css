@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+
+
+
+/* Vos styles personnalisés ici */
+
+body {
+  background-color: #f8f9fa; /* Fond gris clair */
+}
+
+header, footer {
+  background-color: #343a40; /* Noir foncé */
+}
+
+h1, h2 {
+  color: #dc3545; /* Rouge Bootstrap */
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}

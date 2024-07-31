@@ -1,0 +1,12 @@
+<!-- src/app/index/index.component.html -->
+<div class="container mt-5">
+  <h1 class="text-center text-danger mb-4">Liste des Articles</h1>
+  <ul class="list-group">
+    <li *ngFor="let post of posts" class="list-group-item">
+      <a [routerLink]="['/post', post.id]" class="text-dark">{{ post.title }}</a>
+    </li>
+  </ul>
+  <div class="text-center mt-4">
+    <a [routerLink]="['/create']" class="btn btn-danger">Créer un nouvel article</a>
+  </div>
+</div>

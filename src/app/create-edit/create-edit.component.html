@@ -1,0 +1,32 @@
+<!-- src/app/create-edit/create-edit.component.html -->
+<div class="container mt-5">
+  <h1 class="text-center mb-4">{{ isEdit ? 'Modifier' : 'Créer' }} un Article</h1>
+  <form (ngSubmit)="save()" class="bg-light p-4 rounded shadow-sm">
+    <div class="mb-3">
+      <label for="title" class="form-label">Titre</label>
+      <input
+        id="title"
+        [(ngModel)]="post.title"
+        name="title"
+        class="form-control"
+        required
+        placeholder="Entrez le titre"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="body" class="form-label">Contenu</label>
+      <textarea
+        id="body"
+        [(ngModel)]="post.body"
+        name="body"
+        class="form-control"
+        rows="5"
+        required
+        placeholder="Entrez le contenu"
+      ></textarea>
+    </div>
+    <div class="text-center mt-4">
+      <button type="submit" class="btn btn-danger">{{ isEdit ? 'Modifier' : 'Créer' }}</button>
+    </div>
+  </form>
+</div>
