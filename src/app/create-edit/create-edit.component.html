@@ -1,6 +1,6 @@
 <!-- src/app/create-edit/create-edit.component.html -->
 <div class="container mt-5">
-  <h1 class="text-center mb-4">{{ isEdit ? 'Modifier' : 'Créer' }} un Article</h1>
+  <h1 class="text-center text-dark mb-4">{{ isEdit ? 'Modifier' : 'Créer' }} un Article</h1>
   <form (ngSubmit)="save()" class="bg-light p-4 rounded shadow-sm">
     <div class="mb-3">
       <label for="title" class="form-label">Titre</label>
@@ -25,8 +25,8 @@
         placeholder="Entrez le contenu"
       ></textarea>
     </div>
-    <div class="text-center mt-4">
-      <button type="submit" class="btn btn-danger">{{ isEdit ? 'Modifier' : 'Créer' }}</button>
+    <div class="text-start mt-4">
+      <button type="submit" class="btn btn-dark boutton">{{ isEdit ? 'Modifier' : 'Créer' }}</button>
     </div>
   </form>
 </div>

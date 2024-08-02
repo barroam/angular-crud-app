@@ -1,17 +1,19 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { PostService , Post } from '../post.service';
+import { PostService, Post ,Comment} from '../post.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-view',
   standalone: true,
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './view.component.html',
-  styleUrl: './view.component.css'
+  styleUrls: ['./view.component.css'] // Correction ici
 })
 export class ViewComponent implements OnInit {
   post: Post | undefined;
+
+  comments: Comment[] = [];
 
   constructor(
     private postService: PostService,
@@ -22,10 +24,23 @@ export class ViewComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.postService.getArticle(+id).subscribe(data => {
+      const postId = id; // Assurez-vous que postId est une chaîne
+      this.postService.getArticle(postId).subscribe(data => {
         this.post = data;
+        this.loadComments(postId); // Passez postId en tant que chaîne
+      }, error => {
+        console.error('An error occurred:', error);
       });
     }
+  }
+
+  loadComments(postId: string): void { // Accepter postId comme chaîne
+    this.postService.getCommentsForPost(postId).subscribe(comments => {
+      console.log('Comments received:', comments); // Debugging log
+      this.comments = comments;
+    }, error => {
+      console.error('An error occurred:', error);
+    });
   }
 
   deletePost(): void {

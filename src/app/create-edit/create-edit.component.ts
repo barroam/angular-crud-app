@@ -23,8 +23,10 @@ export class CreateEditComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.isEdit = true;
-      this.postService.getArticle(+id).subscribe(data => {
+      this.postService.getArticle(id).subscribe(data => {
         this.post = data;
+      }, error => {
+        console.error('An error occurred:', error);
       });
     }
   }
@@ -33,10 +35,14 @@ export class CreateEditComponent implements OnInit {
     if (this.isEdit) {
       this.postService.updateArticle(this.post.id!, this.post).subscribe(() => {
         this.router.navigate(['/']);
+      }, error => {
+        console.error('An error occurred:', error);
       });
     } else {
       this.postService.createArticle(this.post).subscribe(() => {
         this.router.navigate(['/']);
+      }, error => {
+        console.error('An error occurred:', error);
       });
     }
   }

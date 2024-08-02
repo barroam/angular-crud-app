@@ -24,13 +24,11 @@
               "src/favicon.ico",
               "src/assets"
             ],
-          "styles": [
-  "node_modules/bootstrap/dist/css/bootstrap.min.css",
-  "src/styles.css"
-],
-            "scripts": [
-
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css"
             ],
+            "scripts": [],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
@@ -96,11 +94,23 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": "e6a89ec0-9975-4067-90fd-00b1444c02f6"
+    "analytics": "e6a89ec0-9975-4067-90fd-00b1444c02f6",
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }
