@@ -26,7 +26,7 @@ export class PostService {
 
 //LIEN PERSONNEL
   /*'http://localhost:3002/posts' */
-  private apiUrl = 'http://localhost:3002/posts';
+  private apiUrl = 'https://jsonplaceholder.typicode.com/posts';
 
   constructor(private http: HttpClient) {}
 
@@ -65,7 +65,7 @@ export class PostService {
     //LIEN DU PLACEHOLDER
   /* https://jsonplaceholder.typicode.com/comments?postId=${postId}`*/
   getCommentsForPost(postId: string): Observable<Comment[]> {
-    return this.http.get<Comment[]>(`http://localhost:3002/comments?postId=${postId}`).pipe(
+    return this.http.get<Comment[]>(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`).pipe(
       catchError(this.handleError)
     );
   }
